@@ -15,7 +15,7 @@ import {
   Button,
   SafeAreaView
 } from 'react-native';
-
+import { bytesToString } from "convert-string";
 import { createStackNavigator } from '@react-navigation/stack';
 import BleManager from 'react-native-ble-manager';
 const BleManagerModule = NativeModules.BleManager;

@@ -9,9 +9,6 @@ import { DeviceContext } from './provider/DeviceProvider';
 const Stack = createStackNavigator();
 
 export default function SettingsScreen() {
-
-    const ITEM = useContext(DeviceContext);
-
     return (
       <Stack.Navigator initialRouteName="SettingsComponent">
         <Stack.Screen
@@ -24,11 +21,19 @@ export default function SettingsScreen() {
 }
 
 function SettingsStack(){
-  const ITEM = useContext(DeviceContext);
+  // const ITEM = useContext(DeviceContext);
+  const {value1, value2} = useContext(DeviceContext);
+  const [deviceID, setDeviceID] = value1;
+  const [scanning, setScanning] = value2;
+  //console.log(JSON.stringify(ITEM.deviceID));
+  console.log(JSON.stringify(deviceID));
+  console.log(scanning);
+
   return (
     <View style={styles.container}>
       <Text>This is Settings Screen</Text>
-      <Text>Current Device ID is : {ITEM.deviceID}</Text>
+      <Text>Current Device ID is : {deviceID}</Text>
+      <Text>Current scanning status is : {scanning.toString()}</Text>
     </View>
   );
 }

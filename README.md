@@ -7,6 +7,9 @@ Data broadcasted from ESP32 is displayed real-time.
 > 3) Using Context() as a global var to store States across various screens <br>
 > 4) Using Stack & Bottom-Tab navigators <br>
 
+Arduino script for ESP32 is here : https://github.com/onehwengineer/arduino_esp32_ble <br>
+You need BOTH Arduino script and this app to run this project!
+
 ## Snapshots
 To be included <br>
 

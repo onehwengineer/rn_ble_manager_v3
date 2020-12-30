@@ -120,10 +120,10 @@ Otherwise, *failed to build ios project... error code 65* will show up when `rea
 - **Double click : .../rn_ble_manager_v2/ios/rn_ble_manager_v2.xcworkspace to launch RN app in Xcode**
 - [1] Sign in to Xcode with your developer's account
   - Xcode → Preferences → Accounts tab
-  - ![Image](https://user-images.githubusercontent.com/60368973/103330583-06940800-4a17-11eb-9d2c-927d5b22aabc.png)
+![Image](https://user-images.githubusercontent.com/60368973/103330583-06940800-4a17-11eb-9d2c-927d5b22aabc.png)<br>
 - [2] Assign team
   - Select the account name signed in from previous
-  - ![Image](https://user-images.githubusercontent.com/60368973/103330584-08f66200-4a17-11eb-89e6-f074e777dced.png)
+![Image](https://user-images.githubusercontent.com/60368973/103330584-08f66200-4a17-11eb-89e6-f074e777dced.png)
 - [3] Connect your iPhone to a Mac via Lightening cable
   - In Xcode, hit Windows → Devices and Simulators
   - A window will show up and indicate that this iPhone needs to be trusted
@@ -131,7 +131,7 @@ Otherwise, *failed to build ios project... error code 65* will show up when `rea
   - Xcode will then install debugger support on this iPhone (takes a few min)
   - Afterwards, make sure "Show as run destination" is checked  
   - Finally, select your iPhone as the target as shown below
-  - ![Image](https://user-images.githubusercontent.com/60368973/103330585-0a278f00-4a17-11eb-80f8-e23d58af33e8.png)
+![Image](https://user-images.githubusercontent.com/60368973/103330585-0a278f00-4a17-11eb-80f8-e23d58af33e8.png)
 - [4] Verify Developer App certificate 
   - On your iPhone, click Settings → General → Device Management → Click Trust
 - [5] Hit Run button in Xcode!

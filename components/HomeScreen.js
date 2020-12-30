@@ -15,11 +15,12 @@ import {
   Button,
   SafeAreaView
 } from 'react-native';
-import { bytesToString } from "convert-string";
+import {bytesToString} from 'convert-string';
 import { createStackNavigator } from '@react-navigation/stack';
 import BleManager from 'react-native-ble-manager';
 const BleManagerModule = NativeModules.BleManager;
 const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
+const window = Dimensions.get('window');
 
 import { DeviceContext } from './provider/DeviceProvider';
 
@@ -47,12 +48,17 @@ export default function HomeScreen() {
 
 function HomeStackMain( {navigation} ){
   // const ITEM = useContext(DeviceContext);
-  const {value1, value2, value3, value4, value5} = useContext(DeviceContext);
+  const {value1, value2, value3, value4, 
+    value5, value6, value7, value8, value9 } = useContext(DeviceContext);
   const [deviceID, setDeviceID] = value1;
   const [scanning, setScanning] = value2;
   const [appState, setAppState] = value3;
   const [peripherals, setPeripherals] = value4;
   const [valueState, setValueState] = value5;
+  const [nameState, setNameState] = value6;
+  const [profileState, setProfileState] = value7;
+  const [serviceState, setServiceState] = value8;
+  const [characteristicState, setCharacteristicState] = value9;
   //console.log(JSON.stringify(ITEM.deviceID));
   //console.log(JSON.stringify(deviceID));
 
@@ -150,9 +156,9 @@ function HomeStackMain( {navigation} ){
 
   const test = peripheral => {
     if (peripheral){
-      if (peripheral.connected){
+      if (peripheral.connected){ // If already connected, subsequent click will disconnect
         BleManager.disconnect(peripheral.id);
-      }else{
+      } else{
         BleManager.connect(peripheral.id).then(() => {
           let peripherals_in = peripherals;
           let p = peripherals_in.get(peripheral.id);
@@ -168,11 +174,19 @@ function HomeStackMain( {navigation} ){
           setTimeout(() => {
             BleManager.retrieveServices(peripheral.id).then((peripheralInfo) => {
               console.log('[test()] peripheralInfo : ' + JSON.stringify(peripheralInfo));
+              var name = peripheralInfo["name"];
+              setNameState(name);
+              console.log('[test()] name : ' + JSON.stringify(name));
+              var profile = peripheralInfo["id"];
+              setProfileState(profile);
+              console.log('[test()] profile : ' + JSON.stringify(profile));
               var service = peripheralInfo["characteristics"][0]["service"];
+              setServiceState(service);
               console.log('[test()] service : ' + JSON.stringify(service));
               var characteristics = peripheralInfo["characteristics"];
               console.log('[test()] characteristics : ' + JSON.stringify(characteristics));
               var characteristic = peripheralInfo["characteristics"][0]["characteristic"];
+              setCharacteristicState(characteristic);
               console.log('[test()] characteristic : ' + JSON.stringify(characteristic));
 
               setTimeout(() => {
@@ -206,11 +220,18 @@ function HomeStackMain( {navigation} ){
     console.log("item : " + JSON.stringify(item) );
     const color = item.connected ? 'green' : '#fff';
     return (
-      <TouchableHighlight onPress={()=>test(item) }>
+      //<TouchableHighlight onPress={()=>test(item) }>
+      <TouchableHighlight onPress={() => {
+        //setNameState(item.name);
+        if (!item.connected){
+          navigation.navigate('HomeStackSub');
+        }
+        test(item);
+      }}>
         <View style={[styles.row, {backgroundColor: color}]}>
           <Text style={{fontSize: 12, textAlign: 'center', color: '#333333', padding: 10}}>{item.name}</Text>
           <Text style={{fontSize: 10, textAlign: 'center', color: '#333333', padding: 2}}>RSSI: {item.rssi}</Text>
-          <Text style={{fontSize: 10, textAlign: 'center', color: '#333333', padding: 2}}>Value: {valueState}</Text>
+          {/* <Text style={{fontSize: 10, textAlign: 'center', color: '#333333', padding: 2}}>Value: {valueState}</Text> */}
           <Text style={{fontSize: 8, textAlign: 'center', color: '#333333', padding: 2, paddingBottom: 20}}>{item.id}</Text>
         </View>
       </TouchableHighlight>
@@ -225,22 +246,30 @@ function HomeStackMain( {navigation} ){
     if (list.length == 0) {
       return (
         <View style={{flex:1, margin: 20}}>
-          <Text style={{textAlign: 'center'}}>No peripherals</Text>
+          <Text style={{textAlign: 'center'}}>No peripherals found</Text>
+          <Text style={{textAlign: 'center'}}>Click "Scan Bluetooth (off)" to get started</Text>
         </View>
       );
-    } else { return null; }
+    } else { 
+      return (
+        <View style={{flex:1, margin: 20}}>
+          <Text style={{textAlign: 'center'}}>Click on a BLE name to connect</Text>
+        </View>
+      );
+      // return null; 
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+      <View style={styles.containerSub}>
         <Text>This is Home Screen MAIN</Text>
+        {/*}
         <Text>Current Device ID is : {deviceID}</Text>
-        
         <Button
           title='Go to SUB Component'
           onPress={() => navigation.navigate('HomeStackSub')} />
-        
+        */}
         <View style={{margin: 10}}>
           <Button title={btnScanTitle} onPress={startScan } />
         </View>
@@ -250,7 +279,7 @@ function HomeStackMain( {navigation} ){
           <Button title="Retrieve connected peripherals" onPress={retrieveConnected} />
         </View>
         */}
-        <FlatList
+        <FlatList style={styles.scroll}
           data={list}
           renderItem={({ item }) => renderItem(item) }
           keyExtractor={item => item.id}
@@ -263,24 +292,31 @@ function HomeStackMain( {navigation} ){
 
 
 function HomeStackSub( {navigation} ){
-  // const ITEM = useContext(DeviceContext);
-  const {value1, value2} = useContext(DeviceContext);
+  const {value1, value2, value3, value4, 
+    value5, value6, value7, value8, value9 } = useContext(DeviceContext);
   const [deviceID, setDeviceID] = value1;
   const [scanning, setScanning] = value2;
-  //console.log(JSON.stringify(ITEM.deviceID));
-  console.log(JSON.stringify(deviceID));
+  const [appState, setAppState] = value3;
+  const [peripherals, setPeripherals] = value4;
+  const [valueState, setValueState] = value5;
+  const [nameState, setNameState] = value6;
+  const [profileState, setProfileState] = value7;
+  const [serviceState, setServiceState] = value8;
+  const [characteristicState, setCharacteristicState] = value9;
 
   return (
     <View style={ styles.container }>
-      <View style={styles.container}>
-        <Text>Home Screen SUB</Text>
-        <Text>Current Device ID is : {deviceID}</Text>
-        {/*}
-        <Button
-          title='Go to MAIN Component'
-          onPress={() => navigation.navigate('HomeStackMain')} />
-        */}
-      </View>
+      <Text>Home Screen SUB</Text>
+      <Text>Connected to : {nameState}</Text>
+      <Text>Profile UUID : {profileState}</Text>
+      <Text>Service UUID : {serviceState}</Text>
+      <Text>Characteristic UUID : {characteristicState}</Text>
+      <Text>Value : {valueState}</Text>
+      {/*}
+      <Button
+        title='Go to MAIN Component'
+        onPress={() => navigation.navigate('HomeStackMain')} />
+      */}
     </View>
   );
 }
@@ -290,9 +326,26 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "flex-start",
       alignItems: "center",
-      backgroundColor: '#F3F2F8',
+      backgroundColor: '#F3F2F8', // debug '#00BFFF',
+      width: window.width,
+      height: window.height
+    },
+    containerSub: {
+      flex: 1,
+      justifyContent: "flex-start",
+      alignItems: "center",
+      backgroundColor: '#F3F2F8', // debug '#FF00FF',
+      width: "90%",
+    },
+    scroll: {
+      flex: 1,
+      backgroundColor: '#FFF', // debug '#00FF00',
+      borderRadius: 16,
+      margin: 10,
+      width: "90%"
     },
     row: {
+      //width: "90%",
       margin: 10
     },
 });

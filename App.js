@@ -1,5 +1,8 @@
 /*
 [paulo v1.0]
+- Minor update on styling
+
+[paulo v1.0]
 - Overview : First successful BLE manager app with stack & bottom-tab navigation
 - Features : Click on a BLE server -> goes to sub-stack screen -> connects & displays data
 - To do 1 : Introduce propoer BLE-disconnect flow

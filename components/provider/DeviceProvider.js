@@ -13,10 +13,10 @@ const DeviceProvider = (props) => {
   const [appState, setAppState] = useState(AppState.currentState);
   const [peripherals, setPeripherals] = useState( new Map() );
   const [valueState, setValueState] = useState('');
-  const [nameState, setNameState] = useState('');
-  const [profileState, setProfileState] = useState('');
-  const [serviceState, setServiceState] = useState('');
-  const [characteristicState, setCharacteristicState] = useState('');
+  const [nameState, setNameState] = useState('undefined');
+  const [profileState, setProfileState] = useState('undefined');
+  const [serviceState, setServiceState] = useState('undefined');
+  const [characteristicState, setCharacteristicState] = useState('undefined');
 
   return (
     //<DeviceContext.Provider value={ {deviceID, setDeviceID}}>

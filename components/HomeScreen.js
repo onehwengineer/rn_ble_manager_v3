@@ -246,22 +246,30 @@ function HomeStackMain( {navigation} ){
     if (list.length == 0) {
       return (
         <View style={{flex:1, margin: 20}}>
-          <Text style={{textAlign: 'center'}}>No peripherals</Text>
+          <Text style={{textAlign: 'center'}}>No peripherals found</Text>
+          <Text style={{textAlign: 'center'}}>Click "Scan Bluetooth (off)" to get started</Text>
         </View>
       );
-    } else { return null; }
+    } else { 
+      return (
+        <View style={{flex:1, margin: 20}}>
+          <Text style={{textAlign: 'center'}}>Click on a BLE name to connect</Text>
+        </View>
+      );
+      // return null; 
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerSub}>
         <Text>This is Home Screen MAIN</Text>
+        {/*}
         <Text>Current Device ID is : {deviceID}</Text>
-        
         <Button
           title='Go to SUB Component'
           onPress={() => navigation.navigate('HomeStackSub')} />
-        
+        */}
         <View style={{margin: 10}}>
           <Button title={btnScanTitle} onPress={startScan } />
         </View>
@@ -298,19 +306,17 @@ function HomeStackSub( {navigation} ){
 
   return (
     <View style={ styles.container }>
-      <View style={styles.container}>
-        <Text>Home Screen SUB</Text>
-        <Text>Connected to : {nameState}</Text>
-        <Text>Profile UUID : {profileState}</Text>
-        <Text>Service UUID : {serviceState}</Text>
-        <Text>Characteristic UUID : {characteristicState}</Text>
-        <Text>Value : {valueState}</Text>
-        {/*}
-        <Button
-          title='Go to MAIN Component'
-          onPress={() => navigation.navigate('HomeStackMain')} />
-        */}
-      </View>
+      <Text>Home Screen SUB</Text>
+      <Text>Connected to : {nameState}</Text>
+      <Text>Profile UUID : {profileState}</Text>
+      <Text>Service UUID : {serviceState}</Text>
+      <Text>Characteristic UUID : {characteristicState}</Text>
+      <Text>Value : {valueState}</Text>
+      {/*}
+      <Button
+        title='Go to MAIN Component'
+        onPress={() => navigation.navigate('HomeStackMain')} />
+      */}
     </View>
   );
 }
@@ -320,7 +326,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "flex-start",
       alignItems: "center",
-      backgroundColor: '#00BFFF',
+      backgroundColor: '#F3F2F8', // debug '#00BFFF',
       width: window.width,
       height: window.height
     },
@@ -328,12 +334,13 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "flex-start",
       alignItems: "center",
-      backgroundColor: '#FF00FF',
+      backgroundColor: '#F3F2F8', // debug '#FF00FF',
       width: "90%",
     },
     scroll: {
       flex: 1,
-      backgroundColor: '#00FF00',
+      backgroundColor: '#FFF', // debug '#00FF00',
+      borderRadius: 16,
       margin: 10,
       width: "90%"
     },

@@ -1,4 +1,8 @@
 /*
+[paulo v1.1]
+- Received max BLE data size, 20 bytes
+- Data deconstructed (separated by commas) to display each component
+
 [paulo v1.0]
 - Minor update on styling
 

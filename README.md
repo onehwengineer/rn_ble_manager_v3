@@ -64,6 +64,13 @@ Do NOT create project directory, since `clone` will create a project directory w
 You will now notice that [your project dir]/rn_ble_manager_v2 is created. <br>
 
 
+## (Repo Cloned Already) Getting Latest Changes from Remote Repo
+> If this repo was cloned before, and you'd like to "get" the latest updates to this repo, follow this step
+
+- In Terminal, `cd` into project directory, /rn_ble_manager_v2
+- `git pull origin master` This will get, or "pull" all the latest changes in the remote repo to your local repo.
+
+
 ## Install All Node Libraries/Dependencies in Cloned Project (as specified under packages.json)
 - From Terminal, `cd` into /rn_ble_manager_v2
 - Type : `npm install`

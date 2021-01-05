@@ -11,7 +11,7 @@ Step-by-step tutorial provided here to successfully launch this app in an iPhone
 > 3) Using Context() as a global var to store States across various screens
 > 4) Using Stack & Bottom-Tab navigators
 
-Arduino script (.ino) for ESP32 is here : https://github.com/onehwengineer/arduino_esp32_ble <br>
+Arduino script (.ino) for ESP32 is here : https://github.com/onehwengineer/arduino_esp32_ble_v2 <br>
 You need BOTH Arduino script and this app to run this project! <br>
 Download Arduino script from above and flash on to your ESP32.
 

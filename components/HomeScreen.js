@@ -304,6 +304,14 @@ function HomeStackSub( {navigation} ){
   const [serviceState, setServiceState] = value8;
   const [characteristicState, setCharacteristicState] = value9;
 
+  // Deconstruct BLE data 
+  var deconstructed_a = valueState.split(",");
+  var MOI = deconstructed_a[0];
+  var PH = deconstructed_a[1];
+  var TEMP = deconstructed_a[2];
+  var PHOTO = deconstructed_a[3];
+  var BAT = deconstructed_a[4];
+
   return (
     <View style={ styles.container }>
       <Text>Home Screen SUB</Text>
@@ -311,7 +319,14 @@ function HomeStackSub( {navigation} ){
       <Text>Profile UUID : {profileState}</Text>
       <Text>Service UUID : {serviceState}</Text>
       <Text>Characteristic UUID : {characteristicState}</Text>
-      <Text>Value : {valueState}</Text>
+      <Text>All BLE Data : {valueState}</Text>
+      <View></View>
+      <Text>DECONSTRUCTED BLE DATA</Text>
+      <Text>Moisture : {MOI}</Text>
+      <Text>pH : {PH}</Text>
+      <Text>Temperature : {TEMP}</Text>
+      <Text>Brightness : {PHOTO}</Text>
+      <Text>Battery : {BAT}</Text>
       {/*}
       <Button
         title='Go to MAIN Component'

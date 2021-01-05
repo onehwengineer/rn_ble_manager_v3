@@ -6,9 +6,10 @@ Step-by-step tutorial provided here to successfully launch this app in an iPhone
 (NOT tested in an android device).
 > This app is a modified version of the example app in https://github.com/innoveit/react-native-ble-manager. Changes are : <br>
 > 1) Class components -> Function components with hooks <br>
-> 2) Displaying data broadcasted from ESP32 in real-time <br>
-> 3) Using Context() as a global var to store States across various screens <br>
-> 4) Using Stack & Bottom-Tab navigators <br>
+> (Ref : https://nimblewebdeveloper.com/blog/convert-react-class-to-function-component)
+> 2) Displaying data broadcasted from ESP32 in real-time
+> 3) Using Context() as a global var to store States across various screens
+> 4) Using Stack & Bottom-Tab navigators
 
 Arduino script (.ino) for ESP32 is here : https://github.com/onehwengineer/arduino_esp32_ble <br>
 You need BOTH Arduino script and this app to run this project! <br>

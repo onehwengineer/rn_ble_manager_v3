@@ -140,3 +140,10 @@ Otherwise, *failed to build ios project... error code 65* will show up when `rea
 - [5] Hit Run button in Xcode!
   - You will get a ton of warning messages, but just ignore them.
   - After a few min, your app will launch on your iPhone!
+
+
+## (Other References)
+- Another example using react-native-ble-manager + code walkthrough
+  - Code : https://github.com/catarizea/bvm-ventilator-covid/blob/blog-post-ble-client/react-native/src/App.js
+  - Walkthough : https://catalin.works/blog/bluetooth-low-energy-client-on-react-native-application/
+  

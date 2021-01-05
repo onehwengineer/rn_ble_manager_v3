@@ -19,7 +19,7 @@ Download Arduino script from above and flash on to your ESP32.
 ## App Screenshots
 <img src="https://user-images.githubusercontent.com/60368973/103332121-bc625500-4a1d-11eb-94d8-7d32b53a88eb.png" width="300">
 <img src="https://user-images.githubusercontent.com/60368973/103332136-c84e1700-4a1d-11eb-865a-07fc515cf54c.png" width="300">
-<img src="https://user-images.githubusercontent.com/60368973/103332138-cdab6180-4a1d-11eb-8718-0700a684282f.png" width="300">
+<img src="https://user-images.githubusercontent.com/60368973/103709400-4dc64f80-4f67-11eb-97f4-bf8092f62ecd.png" width="300">
 
 
 ## Install React Native

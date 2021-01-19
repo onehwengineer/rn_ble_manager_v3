@@ -3,13 +3,19 @@ React Native app serving as a client to ESP32 (server), connecting via BLE. <br>
 Data broadcasted from ESP32 is displayed real-time.<br>
 This app does NOT work in Simulator -> **App must be run in an actual device.**<br>
 Step-by-step tutorial provided here to successfully launch this app in an iPhone.<br>
-(NOT tested in an android device).
+(NOT tested uder Android environment).
+
 > This app is a modified version of the example app in https://github.com/innoveit/react-native-ble-manager. Changes are : <br>
 > 1) Class components -> Function components with hooks <br>
 > (Ref : https://nimblewebdeveloper.com/blog/convert-react-class-to-function-component)
 > 2) Displaying data broadcasted from ESP32 in real-time
 > 3) Using Context() as a global var to store States across various screens
 > 4) Using Stack & Bottom-Tab navigators
+
+> **Other References**
+> Another example using react-native-ble-manager + code walkthrough
+>  - Code : https://github.com/catarizea/bvm-ventilator-covid/blob/blog-post-ble-client/react-native/src/App.js
+>  - Walkthough : https://catalin.works/blog/bluetooth-low-energy-client-on-react-native-application/
 
 Arduino script (.ino) for ESP32 is here : https://github.com/onehwengineer/arduino_esp32_ble_v2 <br>
 You need BOTH Arduino script and this app to run this project! <br>
@@ -149,10 +155,4 @@ Otherwise, *failed to build ios project... error code 65* will show up when `rea
 - [5] Hit Run button in Xcode!
   - You will get a ton of warning messages, but just ignore them.
   - After a few min, your app will launch on your iPhone!
-
-
-## (Other References)
-- Another example using react-native-ble-manager + code walkthrough
-  - Code : https://github.com/catarizea/bvm-ventilator-covid/blob/blog-post-ble-client/react-native/src/App.js
-  - Walkthough : https://catalin.works/blog/bluetooth-low-energy-client-on-react-native-application/
   

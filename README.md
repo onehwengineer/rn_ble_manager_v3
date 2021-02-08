@@ -39,6 +39,7 @@ Make sure ALL are installed.
   - Open Terminal, and paste :
   - ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"```
   - This will also install **Xcode Command Line Tools** (this step takes a while... 2.5GB)
+    - Confirm installation by `xcode-select -p` -> Directory will show up
 - [2] Install **Node JS**
   - ```brew install node```
 - [3] Install **React Native Client**

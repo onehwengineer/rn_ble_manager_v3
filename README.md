@@ -2,8 +2,9 @@
 React Native app serving as a client to ESP32 (server), connecting via BLE. <br>
 Data broadcasted from ESP32 is displayed real-time.<br>
 This app does NOT work in Simulator -> **App must be run in an actual device.**<br>
+<br>
 Step-by-step tutorial provided here to successfully launch this app in an iPhone.<br>
-(NOT tested uder Android environment).
+(NOT tested under Android environment).
 
 > This app is a modified version of the example app in https://github.com/innoveit/react-native-ble-manager. Changes are : <br>
 > 1) Class components -> Function components with hooks <br>

@@ -128,7 +128,7 @@ Otherwise, *failed to build ios project... error code 65* will show up when `rea
 ## Run App on Simulator (just to make sure no errors during build)
 - Although the ultimate goal is to lauch this app in an ios device, we still need to test under Simulator to ensure that there are no build errors.
 - In Terminal, make sure you are inside the project directory
-- Type 'react-native run-ios`
+- Type `react-native run-ios`
 - Note that first build takes a while - be patient
 
 ## Run App on Actual Device (iPhone, our final goal!)

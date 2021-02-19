@@ -11,7 +11,7 @@ Arduino script (.ino) for ESP32 is [here](https://github.com/onehwengineer/ardui
 You need BOTH Arduino script and this app to run this project!
 Download Arduino script from above and flash on to your ESP32.
 
-> **Change Logs**
+> **Change Logs** <br>
 > [paulo2]
 > - Fixed : Green background toggle on/off issues with connection/disconnection
 > - For debug, added counter to display relevant items once per each render

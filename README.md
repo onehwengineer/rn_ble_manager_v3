@@ -12,9 +12,9 @@ You need BOTH Arduino script and this app to run this project!
 Download Arduino script from above and flash on to your ESP32.
 
 > **Change Logs** <br>
-> [paulo2]
-> - Fixed : Green background toggle on/off issues with connection/disconnection
-> - For debug, added counter to display relevant items once per each render
-> - Updated var names to make more intuitive
-> - Cleaned up for a better flow
-> - Tested for multiple connect/disconnects
+> - [paulo2]
+>   - Fixed : Green background toggle on/off issues with connection/disconnection
+>   - For debug, added counter to display relevant items once per each render
+>   - Updated var names to make more intuitive
+>   - Cleaned up for a better flow
+>   - Tested for multiple connect/disconnects

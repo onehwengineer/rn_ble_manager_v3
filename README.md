@@ -7,10 +7,10 @@ This app does NOT work in Simulator -> **App must be run in an actual device.**<
 For a step-by-step tutorial on how to launch this app in an iPhone, go [here](https://github.com/onehwengineer/rn_ble_manager_v2)<br>
 (NOT tested under Android environment).<br>
 <br>
-Arduino script (.ino) for ESP32 is [here](https://github.com/onehwengineer/arduino_esp32_ble_v2)
-You need BOTH Arduino script and this app to run this project!
-Download Arduino script from above and flash on to your ESP32.
-
+Arduino script (.ino) for ESP32 is [here](https://github.com/onehwengineer/arduino_esp32_ble_v2). <br>
+You need BOTH Arduino script and this app to run this project! <br>
+Download Arduino script from above and flash on to your ESP32. <br>
+<br>
 > **Change Logs** <br>
 > - [paulo2]
 >   - Fixed : Green background toggle on/off issues with connection/disconnection

@@ -1,16 +1,9 @@
 /*
-[paulo v1.1]
-- Received max BLE data size, 20 bytes
-- Data deconstructed (separated by commas) to display each component
-
-[paulo v1.0]
-- Minor update on styling
-
-[paulo v1.0]
-- Overview : First successful BLE manager app with stack & bottom-tab navigation
-- Features : Click on a BLE server -> goes to sub-stack screen -> connects & displays data
-- To do 1 : Introduce propoer BLE-disconnect flow
-- TO do 2 : How to send >1 sets of data? Assign more characteristics under same service?
+[rn_ble_manager_v3]
+- Fixed : Green background toggle on/off issues with connection/disconnection
+- For debug, added counter to display relevant items once per each render
+- Updated var names to make more intuitive
+- Cleaned up for a better flow
 */
 
 

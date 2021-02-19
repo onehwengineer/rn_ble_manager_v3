@@ -7,32 +7,33 @@ const deviceID_default = 'DEFAULT_DEVICE';
 
 const DeviceProvider = (props) => {
 
-  //const [deviceID, setDeviceID] = useState(deviceID_default);
-  const [deviceID, setDeviceID] = useState(deviceID_default);
-  const [scanning, setScanning] = useState(false);
-  const [appState, setAppState] = useState(AppState.currentState);
-  const [peripherals, setPeripherals] = useState( new Map() );
-  const [valueState, setValueState] = useState('');
-  const [nameState, setNameState] = useState('undefined');
-  const [profileState, setProfileState] = useState('undefined');
-  const [serviceState, setServiceState] = useState('undefined');
-  const [characteristicState, setCharacteristicState] = useState('undefined');
+    const [appState, setAppState] = useState(AppState.currentState);
+    const [scanning, setScanning] = useState(false);
+    const [connected, setConnected] = useState(false);
 
-  return (
-    //<DeviceContext.Provider value={ {deviceID, setDeviceID}}>
-    <DeviceContext.Provider value={ { 
-      value1: [deviceID, setDeviceID], 
-      value2: [scanning, setScanning],
-      value3: [appState, setAppState],
-      value4: [peripherals, setPeripherals],
-      value5: [valueState, setValueState],
-      value6: [nameState, setNameState],
-      value7: [profileState, setProfileState],
-      value8: [serviceState, setServiceState],
-      value9: [characteristicState, setCharacteristicState],
-    }}>
-      {props.children}
-    </DeviceContext.Provider>
+    const [bleDevices, setBleDevices] = useState( new Map() );
+    const [nameState, setNameState] = useState('undefined');
+    const [profileState, setProfileState] = useState('undefined');
+    const [serviceState, setServiceState] = useState('undefined');
+    const [characteristicState, setCharacteristicState] = useState('undefined');
+    const [valueState, setValueState] = useState('');
+
+    return (
+        //<DeviceContext.Provider value={ {deviceID, setDeviceID}}>
+        <DeviceContext.Provider value={ { 
+            APPSTATE:  [appState, setAppState],
+            SCANNING:  [scanning, setScanning],
+            CONNECTED: [connected, setConnected],
+            
+            BLEDEVICES: [bleDevices, setBleDevices],
+            NAME: [nameState, setNameState],
+            PROFILE: [profileState, setProfileState],
+            SERVICE: [serviceState, setServiceState],
+            CHARACT: [characteristicState, setCharacteristicState],
+            VALUE: [valueState, setValueState],
+        }}>
+            {props.children}
+        </DeviceContext.Provider>
   )
 }
 

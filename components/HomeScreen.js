@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { DeviceContext } from './provider/DeviceProvider';
 
+import {Buffer} from 'buffer';
 import {bytesToString} from 'convert-string';
 import BleManager from 'react-native-ble-manager';
 
@@ -120,9 +121,23 @@ function HomeStackMain( {navigation} ){
                     "value": [57, 57, 44, 52, 52, 50, 44, 52, 50, 57, 44, 54, 48, 56, 44, 57, 51, 55]
                 }
             */
-            const value_str = bytesToString(bleDevice.value);
-            setValueState(value_str);
-            console.log(`[handlerUpdate()] Received ${value_str} for characteristic ${bleDevice.characteristic}`);
+            // [1] If BLE data is String
+            // const value_str = bytesToString(bleDevice.value);
+            // setValueState(value_str);
+            // console.log(`[handlerUpdate()] Received ${value_str} for characteristic ${bleDevice.characteristic}`);
+            
+            // [2] If BLE data is Bytes
+            // Bytes assignment : BAT [0,1], MOI [2,3], PH [4,5], PHOTO [6,7], TEMP [8,9]
+            const bytesArray = Buffer.from(bleDevice.value);
+            setValueState( valueState => ({...valueState, 
+                BAT: bytesArray.readUInt8(0) + bytesArray.readUInt8(1)*256,
+                MOI: bytesArray.readUInt8(2) + bytesArray.readUInt8(3)*256,
+                PH: bytesArray.readUInt8(4) + bytesArray.readUInt8(5)*256,
+                PHOTO: bytesArray.readUInt8(6) + bytesArray.readUInt8(7)*256,
+                TEMP: (bytesArray.readUInt8(8) + bytesArray.readUInt8(9)*256) / 10,
+            }));
+            console.log( JSON.stringify(valueState) );
+            console.log(`[handlerUpdate()] Received ${valueState} for characteristic ${bleDevice.characteristic}`);
         });
 
 		if (Platform.OS === 'android' && Platform.Version >= 23) {
@@ -306,7 +321,9 @@ function HomeStackMain( {navigation} ){
 									console.log('[connectAndPrepare()] Started notification on : ' + JSON.stringify(profile_uuid));
 
 									BleManager.read(profile_uuid, service_uuid, characteristic_uuid).then((readData) => {
-                                        console.log("[connectAndPrepare()] readData : ", bytesToString(readData));
+                                        // [1] If BLE data is String
+                                        // console.log("[connectAndPrepare()] readData : ", bytesToString(readData));
+
                                         /*
                                          * NOTE THAT read() TRIGGERS BOTH onConnect() and onRead() in Arduino script
                                          * Data is read from handlerUpdate() in BLEManagerEmitter
@@ -467,14 +484,18 @@ function HomeStackSub( {navigation} ){
     const [characteristicState, setCharacteristicState] = CHARACT;
     const [valueState, setValueState] = VALUE;
 
-	// Deconstruct BLE data 
-	var deconst_a = valueState.split(",");
+	// [1] If BLE data is String
+    // Deconstruct BLE data 
+	/*
+    var deconst_a = valueState.split(",");
 	var MOI = deconst_a[0];
 	var PH = deconst_a[1];
 	var TEMP = deconst_a[2];
 	var PHOTO = deconst_a[3];
 	var BAT = deconst_a[4];
+    */
 
+    // [2] IF BLE data is Bytes
 	return (
 		<View style={ styles.container }>
 			<Text>Home Screen SUB</Text>
@@ -482,15 +503,17 @@ function HomeStackSub( {navigation} ){
 			<Text>Profile UUID : {profileState}</Text>
 			<Text>Service UUID : {serviceState}</Text>
 			<Text>Characteristic UUID : {characteristicState}</Text>
-			<Text>All BLE Data : {valueState}</Text>
+			<Text>All BLE Data : {JSON.stringify(valueState)}</Text>
 			<View></View>
-			<Text>DECONSTRUCTED BLE DATA</Text>
-			<Text>Moisture : {MOI}</Text>
-			<Text>pH : {PH}</Text>
-			<Text>Temperature : {TEMP}</Text>
-			<Text>Brightness : {PHOTO}</Text>
-			<Text>Battery : {BAT}</Text>
-			{/*}
+			
+            <Text>DECONSTRUCTED BLE DATA</Text>
+			<Text>Battery : {JSON.stringify(valueState.BAT)}</Text>
+			<Text>Moisture : {JSON.stringify(valueState.MOI)}</Text>
+			<Text>pH : {JSON.stringify(valueState.PH)}</Text>
+			<Text>Brightness : {JSON.stringify(valueState.PHOTO)}</Text>
+			<Text>Temperature : {JSON.stringify(valueState.TEMP)}</Text>
+			
+            {/*}
 			<Button
 				title='Go to MAIN Component'
 				onPress={() => navigation.navigate('HomeStackMain')} />

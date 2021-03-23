@@ -13,7 +13,9 @@ Download Arduino script from above and flash on to your ESP32. <br>
 <br>
 > **Change Logs** <br>
 > - [paulo3, 20210323]
->   - sdfsdf
+>   - Corresponding Arduino script, rn_ble_manager_v2 (v4, [here](https://github.com/onehwengineer/rn_ble_manager_v3))
+>   - BLE data is in raw bytes format (NOT string as previous)
+>   - Used Buffer library to read bytes (`npm install buffer --save` -> `import { Buffer } from 'buffer';`)
 > - [paulo2]
 >   - Fixed : Green background toggle on/off issues with connection/disconnection
 >   - For debug, added counter to display relevant items once per each render

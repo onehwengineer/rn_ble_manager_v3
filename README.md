@@ -12,6 +12,8 @@ You need BOTH Arduino script and this app to run this project! <br>
 Download Arduino script from above and flash on to your ESP32. <br>
 <br>
 > **Change Logs** <br>
+> - [paulo3, 20210323]
+>   - 
 > - [paulo2]
 >   - Fixed : Green background toggle on/off issues with connection/disconnection
 >   - For debug, added counter to display relevant items once per each render

@@ -13,7 +13,7 @@ Download Arduino script from above and flash on to your ESP32. <br>
 <br>
 > **Change Logs** <br>
 > - [paulo3, 20210323]
->   - 
+>   - sdfsdf
 > - [paulo2]
 >   - Fixed : Green background toggle on/off issues with connection/disconnection
 >   - For debug, added counter to display relevant items once per each render
